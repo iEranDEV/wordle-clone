@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    @apply text-stone-700;
+}
+
+
+.letterIndex {
+    @apply transition-all ease-in-out duration-150 bg-green-500 text-stone-100 animate-wiggle;
+}
+
+.letterContains {
+    @apply transition-all bg-yellow-500 text-stone-100 animate-wiggle;
+}
+
+
