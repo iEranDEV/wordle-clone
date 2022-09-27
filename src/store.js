@@ -7,6 +7,7 @@ export const useStore = defineStore('store', {
         status: 'game',
         userWords: [[], [], [], [], []],
         currentUserWord: 0,
+        error: -1,
     }),
 
     actions: {
@@ -20,20 +21,30 @@ export const useStore = defineStore('store', {
             if(this.userWords[this.currentUserWord].length == 5) {
                 let word = '';
                 this.userWords[this.currentUserWord].forEach(letter => word += letter.letter)
+
+                // Check if word is correct
+                if(word.toUpperCase() === this.wordToGuess.toUpperCase()) {
+                    this.status = 'win';
+                    return;
+                }
+
+                // Check if word exists
                 let response = await axios.get('https://thatwordleapi.azurewebsites.net/ask?word=' + word);
                 if(response.data.Response) {
-                    if(word.toUpperCase() === this.wordToGuess.toUpperCase()) {
-                        this.status = 'win';
-                    }
                     this.currentUserWord++;
                     if(this.currentUserWord == 5) {
                         this.status = 'lose';
                     }
+                    return
                 } else {
                     console.log('word doesnt exist')
                 }
             } 
-            // Wrong animation
+            // Word is too short
+            this.error = this.currentUserWord;
+            setTimeout(() => {
+                this.error = -1;
+            }, 1500)
         },
 
         addLetter(letter) {

@@ -10,11 +10,9 @@
 
 
 .letterIndex {
-    @apply transition-all ease-in-out duration-150 bg-green-500 text-stone-100 animate-wiggle;
+    @apply transition-all ease-in-out duration-150 bg-green-500 text-stone-100 animate-wiggle border-none;
 }
 
 .letterContains {
-    @apply transition-all bg-yellow-500 text-stone-100 animate-wiggle;
+    @apply transition-all bg-yellow-500 text-stone-100 animate-wiggle border-none;
 }
-
-

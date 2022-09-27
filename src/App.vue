@@ -14,8 +14,8 @@
 <script>
 import { useStore } from './store.js';
 import WordleLogo from './components/WordleLogo.vue'
-import WordRow from './components/WordRow.vue'
-import KeyBoard from './components/KeyBoard.vue'
+import WordRow from './components/words/WordRow.vue'
+import KeyBoard from './components/keyboard/KeyBoard.vue'
 import GameEnd from './components/modals/GameEnd.vue'
 
 export default {

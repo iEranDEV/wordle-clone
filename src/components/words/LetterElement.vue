@@ -1,5 +1,5 @@
 <template>
-    <div class="h-16 w-16 border border-stone-400 m-1 rounded-lg flex justify-center items-center text-3xl font-bold" 
+    <div class="h-16 w-16 border border-stone-400 m-1 rounded-lg flex justify-center items-center text-3xl font-bold uppercase" 
         :class="store.currentUserWord != rowIndex ? (letter.status === 'index' ? 'letterIndex' : (letter.status === 'contains' ? 'letterContains' : '')) : ''">
         {{ letter.letter }}
     </div>
