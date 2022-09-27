@@ -4,7 +4,9 @@
 		<div class="m-4 flex flex-col">
 			<word-row v-for="index in 5" :key="index" :index="index - 1" :word="store.userWords[index - 1]" :id="'wordRow_' + (index - 1)"></word-row>
 		</div>
-		<key-board></key-board>
+		<div class="flex justify-center w-full">
+			<key-board></key-board>
+		</div>
 
 		<!-- Game End modal -->
 		<game-end v-if="store.status === 'win' || store.status === 'lose'"></game-end>
@@ -32,19 +34,6 @@ export default {
 		GameEnd,
 		WordRow,
 		KeyBoard
-	},
-	mounted() {
-		document.addEventListener('keyup', (event) => {
-			if(this.store.status === 'game') {
-				if(event.code === 'Enter') {
-					this.store.confirmUserWord();
-				} else if(event.code === 'Backspace') {
-					this.store.deleteLetter();	
-				} else {
-					this.store.addLetter(event.key);
-				}
-			}
-		})
 	}
 }
 </script>

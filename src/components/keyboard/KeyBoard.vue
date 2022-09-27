@@ -40,10 +40,32 @@
 
 <script>
 import KeyLetter from './KeyLetter.vue'
+import { useStore } from '@/store'
 
 export default {
+    setup() {
+        const store = useStore();
+
+
+        return {
+            store,
+        }
+    },
     components: {
         KeyLetter,
+    },
+    mounted() {
+        document.addEventListener('keyup', (event) => {
+			if(this.store.status === 'game') {
+				if(event.code === 'Enter') {
+					this.store.confirmUserWord();
+				} else if(event.code === 'Backspace') {
+					this.store.deleteLetter();	
+				} else {
+					this.store.addLetter(event.key);
+				}
+			}
+		})
     }
 }
 </script>

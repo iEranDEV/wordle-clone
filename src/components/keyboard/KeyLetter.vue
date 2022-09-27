@@ -19,22 +19,11 @@
 <script>
 export default {
     props: {
-        letter: String
-    },
-    data() {
-        return {
-            clicked: false
+        letter: String,
+        clicked: {
+            type: Boolean,
+            default: false
         }
-    },
-    mounted() {
-        document.addEventListener('keyup', (event) => {
-            if(event.key.toUpperCase() === this.letter) {
-                this.clicked = true;
-                setTimeout(() => {
-                    this.clicked = false;
-                }, 500)
-            }
-		})
     },
     methods: {
         emitClick() {
